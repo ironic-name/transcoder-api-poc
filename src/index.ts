@@ -1,4 +1,4 @@
-import { writeFile } from 'fs/promises';
+import { writeFileSync } from 'fs';
 import path from 'path';
 import config from './config/config';
 import { JobConfiguration } from "./interfaces/JobConfiguration";
@@ -48,7 +48,7 @@ async function attemptCreatingJobs() {
     await sleep(1000);
   }
 
-  await writeFile(path.resolve(process.cwd(), './output/results.json'), JSON.stringify(activeJobs, null, 2));
+  writeFileSync(path.resolve(process.cwd(), './output/results.json'), JSON.stringify(activeJobs, null, 2));
 };
 
 attemptCreatingJobs()
